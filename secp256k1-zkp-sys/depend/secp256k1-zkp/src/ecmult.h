@@ -15,9 +15,7 @@
 typedef struct {
     /* For accelerating the computation of a*P + b*G: */
     secp256k1_zkp_ge_storage (*pre_g)[];    /* odd multiples of the generator */
-#ifdef USE_ENDOMORPHISM
     secp256k1_zkp_ge_storage (*pre_g_128)[]; /* odd multiples of 2^128*generator */
-#endif
 } secp256k1_zkp_ecmult_context;
 
 static const size_t SECP256K1_ECMULT_CONTEXT_PREALLOCATED_SIZE;
@@ -43,6 +41,6 @@ typedef int (secp256k1_zkp_ecmult_multi_callback)(secp256k1_zkp_scalar *sc, secp
  *          0 if there is not enough scratch space for a single point or
  *          callback returns 0
  */
-static int secp256k1_zkp_ecmult_multi_var(const secp256k1_zkp_ecmult_context *ctx, secp256k1_zkp_scratch *scratch, secp256k1_zkp_gej *r, const secp256k1_zkp_scalar *inp_g_sc, secp256k1_zkp_ecmult_multi_callback cb, void *cbdata, size_t n);
+static int secp256k1_zkp_ecmult_multi_var(const secp256k1_zkp_callback* error_callback, const secp256k1_zkp_ecmult_context *ctx, secp256k1_zkp_scratch *scratch, secp256k1_zkp_gej *r, const secp256k1_zkp_scalar *inp_g_sc, secp256k1_zkp_ecmult_multi_callback cb, void *cbdata, size_t n);
 
 #endif /* SECP256K1_ECMULT_H */

@@ -52,6 +52,7 @@ fn main() {
         .define("SECP256K1_BUILD", Some("1"))
         // TODO these three should be changed to use libgmp, at least until secp PR 290 is merged
         .define("USE_NUM_NONE", Some("1"))
+        .define("ECMULT_GEN_PREC_BITS", Some("4"))
         .define("USE_FIELD_INV_BUILTIN", Some("1"))
         .define("USE_SCALAR_INV_BUILTIN", Some("1"))
         .define("USE_ENDOMORPHISM", Some("1"))

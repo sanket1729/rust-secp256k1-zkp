@@ -23,7 +23,7 @@ done
 
 cd "$PARENT_DIR"
 rm -rf "$DIR"
-git clone git@github.com:ElementsProject/secp256k1-zkp.git
+git clone https://github.com/ElementsProject/secp256k1-zkp
 cd "$DIR"
 if [ -n "$REV" ]; then
     git checkout "$REV"

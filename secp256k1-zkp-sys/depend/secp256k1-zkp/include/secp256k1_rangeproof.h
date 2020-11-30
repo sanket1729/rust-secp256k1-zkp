@@ -2,7 +2,7 @@
 # define _SECP256K1_RANGEPROOF_
 
 # include "secp256k1.h"
-# include "secp256k1_zkp_generator.h"
+# include "secp256k1_generator.h"
 
 # ifdef __cplusplus
 extern "C" {

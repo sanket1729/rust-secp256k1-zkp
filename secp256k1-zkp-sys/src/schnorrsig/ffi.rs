@@ -35,6 +35,8 @@ impl SchnorrSignature {
     }
     /// Create a new (uninitialized) signature usable for the FFI interface
     pub unsafe fn blank() -> SchnorrSignature {
+        // use of depreciated function
+        // Should be mem::MaybeUninit::uninit().assume_init() from 1.36
         mem::uninitialized()
     }
 }

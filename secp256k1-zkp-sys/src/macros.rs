@@ -75,6 +75,8 @@ macro_rules! impl_array_newtype {
                 unsafe {
                     use core::intrinsics::copy_nonoverlapping;
                     use core::mem;
+                    // use of depreciated function
+                    // Should be mem::MaybeUninit::uninit().assume_init() from 1.36
                     let mut ret: $thing = mem::uninitialized();
                     copy_nonoverlapping(self.as_ptr(), ret.as_mut_ptr(), $len);
                     ret
@@ -139,7 +141,7 @@ macro_rules! impl_raw_debug {
         impl ::core::fmt::Debug for $thing {
             fn fmt(&self, f: &mut ::core::fmt::Formatter) -> ::core::fmt::Result {
                 for i in self[..].iter().cloned() {
-                    try!(write!(f, "{:02x}", i));
+                    write!(f, "{:02x}", i)?;
                 }
                 Ok(())
             }
